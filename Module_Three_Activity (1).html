@@ -1,0 +1,1976 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head></head><body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    
+    
+    
+    
+
+
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<h1>Module Three Activity<a rel="noopener" class="anchor-link" href="#Module-Three-Activity">&#182;</a></h1><p>You will complete your assignment code in this <strong>Module_Three_Activity.ipynb</strong> Notebook file from the filetree that is pre-templated for your modification in accordance with the assignment instructions.</p>
+<p>Once your code is complete, you will download this notebook as an HTML file by clicking <strong>File</strong>, then <strong>Download As</strong>, then <strong>HTML (.html)</strong> from the Jupyter menu bar. You will also need to download the csv output file of your merged data. Validate that your code and outputs are rendered in the html file before submission.</p>
+<div class="alert alert-block alert-danger">
+    <span style="color:black;"><b><i>Missing Blocks:</i></b> Ensure that you have clicked <b><mark>Run</mark></b> for all blocks before downloading as an HTML file or the block may be missing from your submission.</span>
+</div>
+<h3>Data Source Information<a rel="noopener" class="anchor-link" href="#Data-Source-Information">&#182;</a></h3><p>The sourcing information for the data sets can be found in the <code>README.md</code> file within the data folder.</p>
+<p>To use this starter code file, replace the <code>data/sample_use_only/{data_name}.csv</code> with the reference to your selected data from the list below:</p>
+<ul>
+<li><code>data/nyc_temperatures.csv</code></li>
+<li><code>data/nyc_weather_2018.csv</code></li>
+<li><code>data/parsed.csv</code></li>
+<li><code>data/quakes.db</code></li>
+<li><code>data/tsunamis.csv</code></li>
+<li><code>data/weather.db</code></li>
+<li><code>data/weather_by_station.csv</code></li>
+<li><code>data/weather_stations.csv</code></li>
+</ul>
+<div class="alert alert-block alert-success">
+    <span style="color:black;"><b><i>To Begin:</i></b> replace each <b>data_file_#</b> entry sample data path with the path to your selected data sets.</span>
+</div>
+<p>If you choose to only use two data files instead of three, comment out the reference to data_file_3.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[34]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data_file_1</span> <span class="o">=</span> <span class="s2">&quot;data/weather_stations.csv&quot;</span>
+<span class="n">data_file_2</span> <span class="o">=</span> <span class="s2">&quot;data/weather_by_station.csv&quot;</span>
+<span class="n">data_file_3</span> <span class="o">=</span> <span class="s2">&quot;data/nyc_temperatures.csv&quot;</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<h2>Installing Required Packages<a rel="noopener" class="anchor-link" href="#Installing-Required-Packages">&#182;</a></h2><p>If you have additional packages that you would like to use or install, add them to the <strong>requirements.txt</strong> file then run the next block.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[35]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output">
+<pre>Requirement already satisfied: pip in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (26.1.2)
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[36]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output">
+<pre>Requirement already satisfied: ydata-profiling==4.16.1 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from -r requirements.txt (line 1)) (4.16.1)
+Requirement already satisfied: scipy&lt;1.16,&gt;=1.4.1 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (1.10.1)
+Requirement already satisfied: pandas!=1.4.0,&lt;3.0,&gt;1.1 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (2.0.1)
+Requirement already satisfied: matplotlib&lt;=3.10,&gt;=3.5 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (3.7.1)
+Requirement already satisfied: pydantic&gt;=2 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (2.13.4)
+Requirement already satisfied: PyYAML&lt;6.1,&gt;=5.0.0 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (6.0)
+Requirement already satisfied: jinja2&lt;3.2,&gt;=2.11.1 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (3.1.2)
+Requirement already satisfied: visions&lt;0.8.2,&gt;=0.7.5 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from visions[type_image_path]&lt;0.8.2,&gt;=0.7.5-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (0.8.1)
+Requirement already satisfied: numpy&lt;2.2,&gt;=1.16.0 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (1.26.4)
+Requirement already satisfied: htmlmin==0.1.12 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (0.1.12)
+Requirement already satisfied: phik&lt;0.13,&gt;=0.11.1 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (0.12.5)
+Requirement already satisfied: requests&lt;3,&gt;=2.24.0 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (2.30.0)
+Requirement already satisfied: tqdm&lt;5,&gt;=4.48.2 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (4.68.4)
+Requirement already satisfied: seaborn&lt;0.14,&gt;=0.10.1 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (0.12.2)
+Requirement already satisfied: multimethod&lt;2,&gt;=1.4 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (1.12)
+Requirement already satisfied: statsmodels&lt;1,&gt;=0.13.2 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (0.14.6)
+Requirement already satisfied: typeguard&lt;5,&gt;=3 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (4.5.2)
+Requirement already satisfied: imagehash==4.3.1 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (4.3.1)
+Requirement already satisfied: wordcloud&gt;=1.9.3 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (1.9.6)
+Requirement already satisfied: dacite&gt;=1.8 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (1.9.2)
+Requirement already satisfied: numba&lt;=0.61,&gt;=0.56.0 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (0.61.0)
+Requirement already satisfied: PyWavelets in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from imagehash==4.3.1-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (1.9.0)
+Requirement already satisfied: pillow in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from imagehash==4.3.1-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (9.5.0)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from jinja2&lt;3.2,&gt;=2.11.1-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (2.1.2)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from matplotlib&lt;=3.10,&gt;=3.5-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (1.0.7)
+Requirement already satisfied: cycler&gt;=0.10 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from matplotlib&lt;=3.10,&gt;=3.5-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (0.11.0)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from matplotlib&lt;=3.10,&gt;=3.5-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (4.39.3)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from matplotlib&lt;=3.10,&gt;=3.5-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (1.4.4)
+Requirement already satisfied: packaging&gt;=20.0 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from matplotlib&lt;=3.10,&gt;=3.5-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (23.0)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from matplotlib&lt;=3.10,&gt;=3.5-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (3.0.9)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from matplotlib&lt;=3.10,&gt;=3.5-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (2.8.2)
+Requirement already satisfied: llvmlite&lt;0.45,&gt;=0.44.0dev0 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from numba&lt;=0.61,&gt;=0.56.0-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (0.44.0)
+Requirement already satisfied: pytz&gt;=2020.1 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from pandas!=1.4.0,&lt;3.0,&gt;1.1-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (2023.3)
+Requirement already satisfied: tzdata&gt;=2022.1 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from pandas!=1.4.0,&lt;3.0,&gt;1.1-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (2023.3)
+Requirement already satisfied: joblib&gt;=0.14.1 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from phik&lt;0.13,&gt;=0.11.1-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (1.2.0)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from requests&lt;3,&gt;=2.24.0-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (2.1.1)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from requests&lt;3,&gt;=2.24.0-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (3.4)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from requests&lt;3,&gt;=2.24.0-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (2.0.2)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from requests&lt;3,&gt;=2.24.0-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (2023.5.7)
+Requirement already satisfied: patsy&gt;=0.5.6 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from statsmodels&lt;1,&gt;=0.13.2-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (1.0.2)
+Requirement already satisfied: typing_extensions&gt;=4.14.0 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from typeguard&lt;5,&gt;=3-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (4.16.0)
+Requirement already satisfied: attrs&gt;=19.3.0 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from visions&lt;0.8.2,&gt;=0.7.5-&gt;visions[type_image_path]&lt;0.8.2,&gt;=0.7.5-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (23.1.0)
+Requirement already satisfied: networkx&gt;=2.4 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from visions&lt;0.8.2,&gt;=0.7.5-&gt;visions[type_image_path]&lt;0.8.2,&gt;=0.7.5-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (3.6.1)
+Requirement already satisfied: puremagic in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from visions&lt;0.8.2,&gt;=0.7.5-&gt;visions[type_image_path]&lt;0.8.2,&gt;=0.7.5-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (1.30)
+Requirement already satisfied: annotated-types&gt;=0.6.0 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from pydantic&gt;=2-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (0.7.0)
+Requirement already satisfied: pydantic-core==2.46.4 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from pydantic&gt;=2-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (2.46.4)
+Requirement already satisfied: typing-inspection&gt;=0.4.2 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from pydantic&gt;=2-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (0.4.2)
+Requirement already satisfied: six&gt;=1.5 in /home/codio/.pyenv/versions/3.11.2/lib/python3.11/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib&lt;=3.10,&gt;=3.5-&gt;ydata-profiling==4.16.1-&gt;-r requirements.txt (line 1)) (1.16.0)
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<h2>Import the Required Packages<a rel="noopener" class="anchor-link" href="#Import-the-Required-Packages">&#182;</a></h2><p>If you have additional packages that you would like to import, add them here.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[37]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<h2>Loading and Preprocessing the Data<a rel="noopener" class="anchor-link" href="#Loading-and-Preprocessing-the-Data">&#182;</a></h2><p>After you have selected your data set that wish to wrangle, replace the reference file path in the code block at the top of this Notebook, then run the following blocks.</p>
+<div class="alert alert-block alert-danger">
+    <span style="color:black;"><b><i>Example Data:</i></b> Keep in mind that the output below are from the sample data and will need replaced before running the block with your dataset for how you need to preprocess or clean your dataset before merging.</span>
+</div>
+<h3>Data File 1 dataframe<a rel="noopener" class="anchor-link" href="#Data-File-1-dataframe">&#182;</a></h3><p>Here we will load the data_file_1 example data, then pivot and clean it in preparation for merging with the other two selected sample files.</p>
+<p>For your submission you will adjust the code to reflect your selected dataset.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[38]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_file_1</span><span class="p">)</span>
+<span class="n">data1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[38]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>elevation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>GHCND:US1CTFR0022</td>
+      <td>STAMFORD 2.6 SSW, CT US</td>
+      <td>41.064100</td>
+      <td>-73.577000</td>
+      <td>36.6</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>GHCND:US1CTFR0039</td>
+      <td>STAMFORD 4.2 S, CT US</td>
+      <td>41.037788</td>
+      <td>-73.568176</td>
+      <td>6.4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>GHCND:US1NJBG0001</td>
+      <td>BERGENFIELD 0.3 SW, NJ US</td>
+      <td>40.921298</td>
+      <td>-74.001983</td>
+      <td>20.1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>GHCND:US1NJBG0002</td>
+      <td>SADDLE BROOK TWP 0.6 E, NJ US</td>
+      <td>40.902694</td>
+      <td>-74.083358</td>
+      <td>16.8</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>GHCND:US1NJBG0003</td>
+      <td>TENAFLY 1.3 W, NJ US</td>
+      <td>40.914670</td>
+      <td>-73.977500</td>
+      <td>21.6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[39]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data1_wide</span> <span class="o">=</span> <span class="n">data1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">data1_wide</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 279 entries, 0 to 278
+Data columns (total 5 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   id         279 non-null    object 
+ 1   name       279 non-null    object 
+ 2   latitude   279 non-null    float64
+ 3   longitude  279 non-null    float64
+ 4   elevation  278 non-null    float64
+dtypes: float64(3), object(2)
+memory usage: 11.0+ KB
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[40]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data1_wide</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">thresh</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data1_wide</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 279 entries, 0 to 278
+Data columns (total 5 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   id         279 non-null    object 
+ 1   name       279 non-null    object 
+ 2   latitude   279 non-null    float64
+ 3   longitude  279 non-null    float64
+ 4   elevation  278 non-null    float64
+dtypes: float64(3), object(2)
+memory usage: 11.0+ KB
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[41]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data1_wide</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data1_wide</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[41]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>elevation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>GHCND:US1CTFR0022</td>
+      <td>STAMFORD 2.6 SSW, CT US</td>
+      <td>41.064100</td>
+      <td>-73.577000</td>
+      <td>36.6</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>GHCND:US1CTFR0039</td>
+      <td>STAMFORD 4.2 S, CT US</td>
+      <td>41.037788</td>
+      <td>-73.568176</td>
+      <td>6.4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>GHCND:US1NJBG0001</td>
+      <td>BERGENFIELD 0.3 SW, NJ US</td>
+      <td>40.921298</td>
+      <td>-74.001983</td>
+      <td>20.1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>GHCND:US1NJBG0002</td>
+      <td>SADDLE BROOK TWP 0.6 E, NJ US</td>
+      <td>40.902694</td>
+      <td>-74.083358</td>
+      <td>16.8</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>GHCND:US1NJBG0003</td>
+      <td>TENAFLY 1.3 W, NJ US</td>
+      <td>40.914670</td>
+      <td>-73.977500</td>
+      <td>21.6</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>274</th>
+      <td>GHCND:USW00054787</td>
+      <td>FARMINGDALE REPUBLIC AIRPORT, NY US</td>
+      <td>40.734170</td>
+      <td>-73.416940</td>
+      <td>24.7</td>
+    </tr>
+    <tr>
+      <th>275</th>
+      <td>GHCND:USW00094728</td>
+      <td>NY CITY CENTRAL PARK, NY US</td>
+      <td>40.778980</td>
+      <td>-73.969250</td>
+      <td>42.7</td>
+    </tr>
+    <tr>
+      <th>276</th>
+      <td>GHCND:USW00094741</td>
+      <td>TETERBORO AIRPORT, NJ US</td>
+      <td>40.850000</td>
+      <td>-74.061390</td>
+      <td>2.7</td>
+    </tr>
+    <tr>
+      <th>277</th>
+      <td>GHCND:USW00094745</td>
+      <td>WESTCHESTER CO AIRPORT, NY US</td>
+      <td>41.062360</td>
+      <td>-73.704630</td>
+      <td>111.9</td>
+    </tr>
+    <tr>
+      <th>278</th>
+      <td>GHCND:USW00094789</td>
+      <td>JFK INTERNATIONAL AIRPORT, NY US</td>
+      <td>40.639150</td>
+      <td>-73.764010</td>
+      <td>3.4</td>
+    </tr>
+  </tbody>
+</table>
+<p>279 rows &#215; 5 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<h3>Data File 2 dataframe<a rel="noopener" class="anchor-link" href="#Data-File-2-dataframe">&#182;</a></h3><p>Here we will load the data_file_2 example data, then pivot and clean it in preparation for merging with the other two selected sample files.</p>
+<p>For your submission you will adjust the code to reflect your selected dataset.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[42]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_file_2</span><span class="p">)</span>
+<span class="n">data2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[42]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>datatype</th>
+      <th>station</th>
+      <th>value</th>
+      <th>station_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2018-01-01</td>
+      <td>PRCP</td>
+      <td>GHCND:US1CTFR0039</td>
+      <td>0.0</td>
+      <td>STAMFORD 4.2 S, CT US</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2018-01-01</td>
+      <td>PRCP</td>
+      <td>GHCND:US1NJBG0015</td>
+      <td>0.0</td>
+      <td>NORTH ARLINGTON 0.7 WNW, NJ US</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2018-01-01</td>
+      <td>SNOW</td>
+      <td>GHCND:US1NJBG0015</td>
+      <td>0.0</td>
+      <td>NORTH ARLINGTON 0.7 WNW, NJ US</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2018-01-01</td>
+      <td>PRCP</td>
+      <td>GHCND:US1NJBG0017</td>
+      <td>0.0</td>
+      <td>GLEN ROCK 0.7 SSE, NJ US</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2018-01-01</td>
+      <td>SNOW</td>
+      <td>GHCND:US1NJBG0017</td>
+      <td>0.0</td>
+      <td>GLEN ROCK 0.7 SSE, NJ US</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[43]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data2</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Area name&#39;</span><span class="p">:</span> <span class="s1">&#39;Area_Name&#39;</span><span class="p">,</span> <span class="s1">&#39;FIPS Code&#39;</span><span class="p">:</span> <span class="s1">&#39;FIPStxt&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[43]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>datatype</th>
+      <th>station</th>
+      <th>value</th>
+      <th>station_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2018-01-01</td>
+      <td>PRCP</td>
+      <td>GHCND:US1CTFR0039</td>
+      <td>0.0</td>
+      <td>STAMFORD 4.2 S, CT US</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2018-01-01</td>
+      <td>PRCP</td>
+      <td>GHCND:US1NJBG0015</td>
+      <td>0.0</td>
+      <td>NORTH ARLINGTON 0.7 WNW, NJ US</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2018-01-01</td>
+      <td>SNOW</td>
+      <td>GHCND:US1NJBG0015</td>
+      <td>0.0</td>
+      <td>NORTH ARLINGTON 0.7 WNW, NJ US</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2018-01-01</td>
+      <td>PRCP</td>
+      <td>GHCND:US1NJBG0017</td>
+      <td>0.0</td>
+      <td>GLEN ROCK 0.7 SSE, NJ US</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2018-01-01</td>
+      <td>SNOW</td>
+      <td>GHCND:US1NJBG0017</td>
+      <td>0.0</td>
+      <td>GLEN ROCK 0.7 SSE, NJ US</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[44]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data2_wide</span> <span class="o">=</span> <span class="n">data2</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">data2_wide</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 80256 entries, 0 to 80255
+Data columns (total 5 columns):
+ #   Column        Non-Null Count  Dtype  
+---  ------        --------------  -----  
+ 0   date          80256 non-null  object 
+ 1   datatype      80256 non-null  object 
+ 2   station       80256 non-null  object 
+ 3   value         80256 non-null  float64
+ 4   station_name  80256 non-null  object 
+dtypes: float64(1), object(4)
+memory usage: 3.1+ MB
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[45]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data2_wide</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[45]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>datatype</th>
+      <th>station</th>
+      <th>value</th>
+      <th>station_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2018-01-01</td>
+      <td>PRCP</td>
+      <td>GHCND:US1CTFR0039</td>
+      <td>0.0</td>
+      <td>STAMFORD 4.2 S, CT US</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2018-01-01</td>
+      <td>PRCP</td>
+      <td>GHCND:US1NJBG0015</td>
+      <td>0.0</td>
+      <td>NORTH ARLINGTON 0.7 WNW, NJ US</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2018-01-01</td>
+      <td>SNOW</td>
+      <td>GHCND:US1NJBG0015</td>
+      <td>0.0</td>
+      <td>NORTH ARLINGTON 0.7 WNW, NJ US</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2018-01-01</td>
+      <td>PRCP</td>
+      <td>GHCND:US1NJBG0017</td>
+      <td>0.0</td>
+      <td>GLEN ROCK 0.7 SSE, NJ US</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2018-01-01</td>
+      <td>SNOW</td>
+      <td>GHCND:US1NJBG0017</td>
+      <td>0.0</td>
+      <td>GLEN ROCK 0.7 SSE, NJ US</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>80251</th>
+      <td>2018-12-31</td>
+      <td>WDF5</td>
+      <td>GHCND:USW00094789</td>
+      <td>130.0</td>
+      <td>JFK INTERNATIONAL AIRPORT, NY US</td>
+    </tr>
+    <tr>
+      <th>80252</th>
+      <td>2018-12-31</td>
+      <td>WSF2</td>
+      <td>GHCND:USW00094789</td>
+      <td>9.8</td>
+      <td>JFK INTERNATIONAL AIRPORT, NY US</td>
+    </tr>
+    <tr>
+      <th>80253</th>
+      <td>2018-12-31</td>
+      <td>WSF5</td>
+      <td>GHCND:USW00094789</td>
+      <td>12.5</td>
+      <td>JFK INTERNATIONAL AIRPORT, NY US</td>
+    </tr>
+    <tr>
+      <th>80254</th>
+      <td>2018-12-31</td>
+      <td>WT01</td>
+      <td>GHCND:USW00094789</td>
+      <td>1.0</td>
+      <td>JFK INTERNATIONAL AIRPORT, NY US</td>
+    </tr>
+    <tr>
+      <th>80255</th>
+      <td>2018-12-31</td>
+      <td>WT02</td>
+      <td>GHCND:USW00094789</td>
+      <td>1.0</td>
+      <td>JFK INTERNATIONAL AIRPORT, NY US</td>
+    </tr>
+  </tbody>
+</table>
+<p>80256 rows &#215; 5 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<h3>Data File 3 dataframe<a rel="noopener" class="anchor-link" href="#Data-File-3-dataframe">&#182;</a></h3><p>If you choose not to included a third file for merging, remove or comment out the blocks for data3.</p>
+<p>Here we will load the data_file_3 example data, then pivot and clean it in preparation for merging with the other two selected sample files.</p>
+<p>For your submission you will adjust the code to reflect your selected dataset.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[46]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_file_3</span><span class="p">)</span>
+<span class="n">data3</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[46]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>datatype</th>
+      <th>station</th>
+      <th>attributes</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2018-10-01T00:00:00</td>
+      <td>TAVG</td>
+      <td>GHCND:USW00014732</td>
+      <td>H,,S,</td>
+      <td>21.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2018-10-01T00:00:00</td>
+      <td>TMAX</td>
+      <td>GHCND:USW00014732</td>
+      <td>,,W,2400</td>
+      <td>25.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2018-10-01T00:00:00</td>
+      <td>TMIN</td>
+      <td>GHCND:USW00014732</td>
+      <td>,,W,2400</td>
+      <td>18.3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2018-10-02T00:00:00</td>
+      <td>TAVG</td>
+      <td>GHCND:USW00014732</td>
+      <td>H,,S,</td>
+      <td>22.7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2018-10-02T00:00:00</td>
+      <td>TMAX</td>
+      <td>GHCND:USW00014732</td>
+      <td>,,W,2400</td>
+      <td>26.1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[47]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data3</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;FIPS_Code&#39;</span><span class="p">:</span> <span class="s1">&#39;FIPStxt&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data3</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[47]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>datatype</th>
+      <th>station</th>
+      <th>attributes</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2018-10-01T00:00:00</td>
+      <td>TAVG</td>
+      <td>GHCND:USW00014732</td>
+      <td>H,,S,</td>
+      <td>21.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2018-10-01T00:00:00</td>
+      <td>TMAX</td>
+      <td>GHCND:USW00014732</td>
+      <td>,,W,2400</td>
+      <td>25.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2018-10-01T00:00:00</td>
+      <td>TMIN</td>
+      <td>GHCND:USW00014732</td>
+      <td>,,W,2400</td>
+      <td>18.3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2018-10-02T00:00:00</td>
+      <td>TAVG</td>
+      <td>GHCND:USW00014732</td>
+      <td>H,,S,</td>
+      <td>22.7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2018-10-02T00:00:00</td>
+      <td>TMAX</td>
+      <td>GHCND:USW00014732</td>
+      <td>,,W,2400</td>
+      <td>26.1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[48]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data3_wide</span> <span class="o">=</span> <span class="n">data3</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">data3_wide</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 93 entries, 0 to 92
+Data columns (total 5 columns):
+ #   Column      Non-Null Count  Dtype  
+---  ------      --------------  -----  
+ 0   date        93 non-null     object 
+ 1   datatype    93 non-null     object 
+ 2   station     93 non-null     object 
+ 3   attributes  93 non-null     object 
+ 4   value       93 non-null     float64
+dtypes: float64(1), object(4)
+memory usage: 3.8+ KB
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[49]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data3_wide</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">thresh</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data3_wide</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 93 entries, 0 to 92
+Data columns (total 5 columns):
+ #   Column      Non-Null Count  Dtype  
+---  ------      --------------  -----  
+ 0   date        93 non-null     object 
+ 1   datatype    93 non-null     object 
+ 2   station     93 non-null     object 
+ 3   attributes  93 non-null     object 
+ 4   value       93 non-null     float64
+dtypes: float64(1), object(4)
+memory usage: 3.8+ KB
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[50]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data3_wide</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data3_wide</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[50]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>datatype</th>
+      <th>station</th>
+      <th>attributes</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2018-10-01T00:00:00</td>
+      <td>TAVG</td>
+      <td>GHCND:USW00014732</td>
+      <td>H,,S,</td>
+      <td>21.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2018-10-01T00:00:00</td>
+      <td>TMAX</td>
+      <td>GHCND:USW00014732</td>
+      <td>,,W,2400</td>
+      <td>25.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2018-10-01T00:00:00</td>
+      <td>TMIN</td>
+      <td>GHCND:USW00014732</td>
+      <td>,,W,2400</td>
+      <td>18.3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2018-10-02T00:00:00</td>
+      <td>TAVG</td>
+      <td>GHCND:USW00014732</td>
+      <td>H,,S,</td>
+      <td>22.7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2018-10-02T00:00:00</td>
+      <td>TMAX</td>
+      <td>GHCND:USW00014732</td>
+      <td>,,W,2400</td>
+      <td>26.1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>2018-10-30T00:00:00</td>
+      <td>TMAX</td>
+      <td>GHCND:USW00014732</td>
+      <td>,,W,2400</td>
+      <td>13.9</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>2018-10-30T00:00:00</td>
+      <td>TMIN</td>
+      <td>GHCND:USW00014732</td>
+      <td>,,W,2400</td>
+      <td>7.2</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>2018-10-31T00:00:00</td>
+      <td>TAVG</td>
+      <td>GHCND:USW00014732</td>
+      <td>H,,S,</td>
+      <td>12.6</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>2018-10-31T00:00:00</td>
+      <td>TMAX</td>
+      <td>GHCND:USW00014732</td>
+      <td>,,W,2400</td>
+      <td>17.8</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>2018-10-31T00:00:00</td>
+      <td>TMIN</td>
+      <td>GHCND:USW00014732</td>
+      <td>,,W,2400</td>
+      <td>7.2</td>
+    </tr>
+  </tbody>
+</table>
+<p>93 rows &#215; 5 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<h3>Data Merging<a rel="noopener" class="anchor-link" href="#Data-Merging">&#182;</a></h3><p>Here is the example of a merge of the three sample files. You will need to adjust these blocks for how you wish to merge your selected data files.</p>
+<div class="alert alert-block alert-danger">
+    <span style="color:black;"><b><i>Example Data:</i></b> Keep in mind that the output below are from the sample data and will need replaced before running the block with your dataset for how you need merge your dataset.</span>
+</div>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[51]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">merged_data_1_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">data1_wide</span><span class="p">,</span> <span class="n">data2_wide</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">&quot;station&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
+<span class="n">merged_data_1_2</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[51]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>elevation</th>
+      <th>date</th>
+      <th>datatype</th>
+      <th>station</th>
+      <th>value</th>
+      <th>station_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>GHCND:US1CTFR0039</td>
+      <td>STAMFORD 4.2 S, CT US</td>
+      <td>41.037788</td>
+      <td>-73.568176</td>
+      <td>6.4</td>
+      <td>2018-01-01</td>
+      <td>PRCP</td>
+      <td>GHCND:US1CTFR0039</td>
+      <td>0.0</td>
+      <td>STAMFORD 4.2 S, CT US</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>GHCND:US1CTFR0039</td>
+      <td>STAMFORD 4.2 S, CT US</td>
+      <td>41.037788</td>
+      <td>-73.568176</td>
+      <td>6.4</td>
+      <td>2018-01-02</td>
+      <td>PRCP</td>
+      <td>GHCND:US1CTFR0039</td>
+      <td>0.0</td>
+      <td>STAMFORD 4.2 S, CT US</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>GHCND:US1CTFR0039</td>
+      <td>STAMFORD 4.2 S, CT US</td>
+      <td>41.037788</td>
+      <td>-73.568176</td>
+      <td>6.4</td>
+      <td>2018-01-03</td>
+      <td>PRCP</td>
+      <td>GHCND:US1CTFR0039</td>
+      <td>0.0</td>
+      <td>STAMFORD 4.2 S, CT US</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>GHCND:US1CTFR0039</td>
+      <td>STAMFORD 4.2 S, CT US</td>
+      <td>41.037788</td>
+      <td>-73.568176</td>
+      <td>6.4</td>
+      <td>2018-01-05</td>
+      <td>DAPR</td>
+      <td>GHCND:US1CTFR0039</td>
+      <td>2.0</td>
+      <td>STAMFORD 4.2 S, CT US</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>GHCND:US1CTFR0039</td>
+      <td>STAMFORD 4.2 S, CT US</td>
+      <td>41.037788</td>
+      <td>-73.568176</td>
+      <td>6.4</td>
+      <td>2018-01-05</td>
+      <td>MDPR</td>
+      <td>GHCND:US1CTFR0039</td>
+      <td>15.5</td>
+      <td>STAMFORD 4.2 S, CT US</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>78467</th>
+      <td>GHCND:USW00094789</td>
+      <td>JFK INTERNATIONAL AIRPORT, NY US</td>
+      <td>40.639150</td>
+      <td>-73.764010</td>
+      <td>3.4</td>
+      <td>2018-12-31</td>
+      <td>WDF5</td>
+      <td>GHCND:USW00094789</td>
+      <td>130.0</td>
+      <td>JFK INTERNATIONAL AIRPORT, NY US</td>
+    </tr>
+    <tr>
+      <th>78468</th>
+      <td>GHCND:USW00094789</td>
+      <td>JFK INTERNATIONAL AIRPORT, NY US</td>
+      <td>40.639150</td>
+      <td>-73.764010</td>
+      <td>3.4</td>
+      <td>2018-12-31</td>
+      <td>WSF2</td>
+      <td>GHCND:USW00094789</td>
+      <td>9.8</td>
+      <td>JFK INTERNATIONAL AIRPORT, NY US</td>
+    </tr>
+    <tr>
+      <th>78469</th>
+      <td>GHCND:USW00094789</td>
+      <td>JFK INTERNATIONAL AIRPORT, NY US</td>
+      <td>40.639150</td>
+      <td>-73.764010</td>
+      <td>3.4</td>
+      <td>2018-12-31</td>
+      <td>WSF5</td>
+      <td>GHCND:USW00094789</td>
+      <td>12.5</td>
+      <td>JFK INTERNATIONAL AIRPORT, NY US</td>
+    </tr>
+    <tr>
+      <th>78470</th>
+      <td>GHCND:USW00094789</td>
+      <td>JFK INTERNATIONAL AIRPORT, NY US</td>
+      <td>40.639150</td>
+      <td>-73.764010</td>
+      <td>3.4</td>
+      <td>2018-12-31</td>
+      <td>WT01</td>
+      <td>GHCND:USW00094789</td>
+      <td>1.0</td>
+      <td>JFK INTERNATIONAL AIRPORT, NY US</td>
+    </tr>
+    <tr>
+      <th>78471</th>
+      <td>GHCND:USW00094789</td>
+      <td>JFK INTERNATIONAL AIRPORT, NY US</td>
+      <td>40.639150</td>
+      <td>-73.764010</td>
+      <td>3.4</td>
+      <td>2018-12-31</td>
+      <td>WT02</td>
+      <td>GHCND:USW00094789</td>
+      <td>1.0</td>
+      <td>JFK INTERNATIONAL AIRPORT, NY US</td>
+    </tr>
+  </tbody>
+</table>
+<p>78472 rows &#215; 10 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[52]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">final_merged_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">data3_wide</span><span class="p">,</span> <span class="n">merged_data_1_2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;station&quot;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;_station_weather&quot;</span><span class="p">,</span> <span class="s2">&quot;_temperature&quot;</span><span class="p">)</span>
+                            <span class="p">)</span>
+<span class="n">final_merged_data</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[52]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult">
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>datatype_station_weather</th>
+      <th>station</th>
+      <th>attributes</th>
+      <th>value_station_weather</th>
+      <th>id</th>
+      <th>name</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>elevation</th>
+      <th>datatype_temperature</th>
+      <th>value_temperature</th>
+      <th>station_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2018-10-01T00:00:00</td>
+      <td>TAVG</td>
+      <td>GHCND:USW00014732</td>
+      <td>H,,S,</td>
+      <td>21.2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2018-10-01T00:00:00</td>
+      <td>TMAX</td>
+      <td>GHCND:USW00014732</td>
+      <td>,,W,2400</td>
+      <td>25.6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2018-10-01T00:00:00</td>
+      <td>TMIN</td>
+      <td>GHCND:USW00014732</td>
+      <td>,,W,2400</td>
+      <td>18.3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2018-10-02T00:00:00</td>
+      <td>TAVG</td>
+      <td>GHCND:USW00014732</td>
+      <td>H,,S,</td>
+      <td>22.7</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2018-10-02T00:00:00</td>
+      <td>TMAX</td>
+      <td>GHCND:USW00014732</td>
+      <td>,,W,2400</td>
+      <td>26.1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>2018-10-30T00:00:00</td>
+      <td>TMAX</td>
+      <td>GHCND:USW00014732</td>
+      <td>,,W,2400</td>
+      <td>13.9</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>2018-10-30T00:00:00</td>
+      <td>TMIN</td>
+      <td>GHCND:USW00014732</td>
+      <td>,,W,2400</td>
+      <td>7.2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>2018-10-31T00:00:00</td>
+      <td>TAVG</td>
+      <td>GHCND:USW00014732</td>
+      <td>H,,S,</td>
+      <td>12.6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>2018-10-31T00:00:00</td>
+      <td>TMAX</td>
+      <td>GHCND:USW00014732</td>
+      <td>,,W,2400</td>
+      <td>17.8</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>2018-10-31T00:00:00</td>
+      <td>TMIN</td>
+      <td>GHCND:USW00014732</td>
+      <td>,,W,2400</td>
+      <td>7.2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>93 rows &#215; 13 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput">
+<h3>Data Output<a rel="noopener" class="anchor-link" href="#Data-Output">&#182;</a></h3><div class="alert alert-block alert-danger">
+    <span style="color:black;"><b><i>Example Data:</i></b> Keep in mind that the output below are from the sample data and will need replaced before running the block with your dataset for how you want to output your merged dataset.</span>
+</div>
+<div class="alert alert-block alert-success">
+    <span style="color:black;"><b><i>Data Output:</i></b> replace the output path <b><mark>&#39;data/sample_use_only/sample_output/sample_merged_data.csv&#39;</mark></b> with your path <b><mark>&#39;data/{your_merged_data.csv}&#39;</mark></b>.</span>
+</div>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[53]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">final_merged_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data/output/weather_merged_data.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&#160;[&#160;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor">
+     <div class="CodeMirror cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<script type="module" src="https://s.brightspace.com/lib/bsi/2026.7.210/unbundled/mathjax.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() {
+					if (document.querySelector('math, .d2l-element, .d2l-cplus-layout') || /\$\$|\\\(|\\\[|\\begin{|\\ref{|\\eqref{/.test(document.body.innerHTML)) {
+						document.querySelectorAll('mspace[linebreak="newline"]').forEach(elm => {
+							elm.setAttribute('style', 'display: block; height: 0.5rem;');
+						});
+
+						document.querySelectorAll('math mmultiscripts > none').forEach(elm => {
+							const mrow = document.createElementNS('http://www.w3.org/1998/Math/MathML', 'mrow');
+							elm.replaceWith(mrow);
+						});
+
+						window.D2L.MathJax.loadMathJax({
+							outputScale: 1.5,
+							renderLatex: false,
+							enableMML3Support: false
+						});
+					}
+				});</script><script type="module" src="https://s.brightspace.com/lib/bsi/2026.7.210/unbundled/prism.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() {
+					document.querySelectorAll('.d2l-code').forEach(code => {
+						window.D2L.Prism.formatCodeElement(code);
+					});
+				});</script><script type="module" src="https://s.brightspace.com/lib/bsi/2026.7.210/unbundled/embeds.js"></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() {
+					window.D2L.EmbedRenderer.renderEmbeds(document.body);
+				});</script></body></html>
